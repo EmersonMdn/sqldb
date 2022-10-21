@@ -1,0 +1,30 @@
+[
+  {
+    "title": "Pizza",
+    "price": 32,
+    "thumbnail": "https://picsum.photos/200",
+    "id": 1,
+    "likes": []
+  },
+  {
+    "title": "Pizza peperoni",
+    "price": 132,
+    "thumbnail": "https://picsum.photos/200",
+    "id": 2,
+    "likes": []
+  },
+  {
+    "title": "Helado",
+    "price": "29",
+    "thumbnail": "https://picsum.photos/200",
+    "id": 3,
+    "likes": []
+  },
+  {
+    "title": "Jarra",
+    "price": "200",
+    "thumbnail": "https://picsum.photos/200",
+    "id": 4,
+    "likes": []
+  }
+]
