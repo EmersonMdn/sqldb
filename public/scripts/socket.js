@@ -31,10 +31,10 @@ const sendMessage = (e) => {
   const name = document.getElementById("mailInput").value;
   const msg = document.getElementById("messageInput").value;
   const time = new Date();
+
   document.getElementById("messageInput").value = "";
   msg.length > 0 &&
     socket.emit("new_msg", { autor: name, message: msg, time: time });
-  return false;
 };
 
 const socket = io.connect();
@@ -43,6 +43,5 @@ socket.on("products", (item) => {
   renderList(item);
 });
 socket.on("chat-messages", (msg) => {
-  console.log(msg);
   renderChat(msg);
 });
