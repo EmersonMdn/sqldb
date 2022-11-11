@@ -4,8 +4,8 @@ const renderList = (item) => {
       (it) => `
     <tr>
         <td>${it.title}</td>
-        <td>${it.price}</td>
-        <td><img src=${it.thumbnail} alt=""></td>
+        <td>$${it.price}</td>
+        <td><img className="avatar-img" src=${it.thumbnail} alt=""></td>
     </tr>`
     )
     .join("");
@@ -13,13 +13,20 @@ const renderList = (item) => {
 };
 
 const renderChat = (chat) => {
+  const hora = new Date().toLocaleTimeString();
   const li = chat
     .map(
       (msg) => `
     <li>
-    <div classname='msg'>
-      <div class='boldtxt'>${msg.author.nombre}</div>
-      [<img src=${msg.author.avatar}>]:${msg.text}
+    <div class='msg'>
+    <img class='avatar-img' src=${msg.author.avatar}>
+      <h5 class='boldtxt'>${msg.author.nombre}</h5>
+     
+        <p class="text">${msg.text} </p>
+        <small class="time">${
+          hora /* La hora solo se la puse de forma ilustrativa, ya que en el desafio no lo pedia */
+        } ✓✓</small> 
+      
     </div>
     </li>`
     )

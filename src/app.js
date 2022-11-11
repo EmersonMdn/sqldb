@@ -47,6 +47,7 @@ app.get("/api/productos-test", async (req, res) => {
 io.on("connection", async (socket) => {
   console.log("connected to", socket.id);
 
+  socket.emit('products', await dbProducts.getAll());
   socket.emit("chat-messages", await dbMensajes.getAll());
 
   socket.on("new_msg", async (msg) => {
