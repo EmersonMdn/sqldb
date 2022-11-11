@@ -1,15 +1,15 @@
 const mongoose = require("mongoose");
 
-mongoose.connect(
-  "mongodb+srv://EmersonMdn:Loque.321@cluster0.0llifr1.mongodb.net/coderhouse?retryWrites=true&w=majority",
-  {
-    serverSelectionTimeoutMS: 5000,
-  }
-);
+// mongoose.connect(
+//   "mongodb+srv://EmersonMdn:Loque.321@cluster0.0llifr1.mongodb.net/coderhouse?retryWrites=true&w=majority",
+//   {
+//     serverSelectionTimeoutMS: 5000,
+//   }
+// );
 
 class MongoContainer {
-  constructor(collection, schema) {
-    this.db = mongoose.model(collection, schema);
+  constructor(model) {
+    this.db = model;
   }
 
   async getAll() {

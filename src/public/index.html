@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./styles/index.css" />
+    <link rel="stylesheet" href="/styles/index.css" />
     <script src="/socket.io/socket.io.js"></script>
     <script src="./scripts/socket.js"></script>
     <title>My products</title>
@@ -51,12 +51,14 @@
             <h3>Chat with us!</h3>
             <form onsubmit="return sendMessage(this)">
                 <input type="email" id="mailInput" placeholder="Ingrese su mail" required>
-                <input type="text" id="nameInput" required>
-                <input type="text" id="lastNameInput" required>
-                <input type="text" id="aliasInput" required>
-                <input type="text" id="ageInput" required>
-                <input type="text" id="avatarInput" required>
+                <input type="text" id="nameInput" placeholder="Juan" required>
+                <input type="text" id="lastNameInput" placeholder="Perez" required>
+                <input type="text" id="aliasInput" placeholder="JuanP" required>
+                <input type="number" id="ageInput" placeholder="34" required>
+                <input type="text" id="avatarInput" placeholder="htt://avatar.jpg/" required>
+
                 <ul id="messages"></ul>
+
                 <input type="text" id="messageInput" placeholder="Write message">
                 <button>Enviar</button>
             </form>

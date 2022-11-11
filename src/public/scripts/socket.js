@@ -18,8 +18,8 @@ const renderChat = (chat) => {
       (msg) => `
     <li>
     <div classname='msg'>
-      <div class='boldtxt'>${msg.autor}</div>
-      [${msg.date}]:${msg.message}
+      <div class='boldtxt'>${msg.author.nombre}</div>
+      [<img src=${msg.author.avatar}>]:${msg.text}
     </div>
     </li>`
     )
@@ -38,7 +38,7 @@ const sendMessage = (e) => {
 
   msg.length > 0 &&
     socket.emit("new_msg", {
-      autor: {
+      author: {
         id: mail,
         nombre: nameInput,
         apellido: lastNameInput,
