@@ -19,7 +19,7 @@ const renderChat = (chat) => {
     <li>
     <div classname='msg'>
       <div class='boldtxt'>${msg.autor}</div>
-      [${msg.time}]:${msg.message}
+      [${msg.date}]:${msg.message}
     </div>
     </li>`
     )
@@ -28,13 +28,28 @@ const renderChat = (chat) => {
 };
 
 const sendMessage = (e) => {
-  const name = document.getElementById("mailInput").value;
+  const mail = document.getElementById("mailInput").value;
   const msg = document.getElementById("messageInput").value;
-  const time = new Date();
+  const nameInput = document.getElementById("nameInput").value;
+  const lastNameInput = document.getElementById("lastNameInput").value;
+  const aliasInput = document.getElementById("aliasInput").value;
+  const ageInput = document.getElementById("ageInput").value;
+  const avatarInput = document.getElementById("avatarInput").value;
+
+  msg.length > 0 &&
+    socket.emit("new_msg", {
+      autor: {
+        id: mail,
+        nombre: nameInput,
+        apellido: lastNameInput,
+        edad: ageInput,
+        alias: aliasInput,
+        avatar: avatarInput,
+      },
+      text: msg,
+    });
 
   document.getElementById("messageInput").value = "";
-  msg.length > 0 &&
-    socket.emit("new_msg", { autor: name, message: msg, time: time });
 };
 
 const socket = io.connect();
