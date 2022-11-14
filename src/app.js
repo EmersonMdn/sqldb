@@ -5,6 +5,12 @@ const app = express();
 const { faker } = require("@faker-js/faker");
 faker.locale = "es_MX";
 
+//NORMALIZER
+const { normalize, schema } = require("normalizr");
+
+//UTIL
+const util = require("util");
+
 //MONGO
 const mongoose = require("mongoose");
 const Message = require("./models/messageSchema.js");
@@ -46,8 +52,19 @@ app.get("/api/productos-test", async (req, res) => {
 
 io.on("connection", async (socket) => {
   console.log("connected to", socket.id);
+  socket.emit("products", await dbProducts.getAll());
 
-  socket.emit('products', await dbProducts.getAll());
+  const mensajes = await dbMensajes.getAll();
+
+  const myData = { id: "mensajes", mensajes: [...mensajes] };
+  const mensaje = new schema.Entity("authors", {}, { idAttribute: "email" }); //al agregarle el idAttribute: 'email' devuelve undefined por consola por eso pongo text
+  const mySchema = { mensajes: [mensaje] };
+  const mensajesNormalized = normalize(myData, mySchema);
+
+  console.log(util.inspect(mensajesNormalized, false, 10, true));
+  console.log(mensajes.length);
+  console.log(JSON.stringify(mensajesNormalized).length);
+
   socket.emit("chat-messages", await dbMensajes.getAll());
 
   socket.on("new_msg", async (msg) => {

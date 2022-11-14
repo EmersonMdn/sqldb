@@ -22,8 +22,10 @@
     "knex": "^2.3.0",
     "mongoose": "^6.7.2",
     "mysql": "^2.18.1",
+    "normalizr": "^3.6.2",
     "socket.io": "^4.5.2",
-    "sqlite3": "^5.1.2"
+    "sqlite3": "^5.1.2",
+    "util": "^0.12.5"
   },
   "devDependencies": {
     "@faker-js/faker": "^7.6.0"

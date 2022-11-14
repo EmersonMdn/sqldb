@@ -66,4 +66,16 @@ socket.on("products", (item) => {
 });
 socket.on("chat-messages", (msg) => {
   renderChat(msg);
+
+  const myData = { id: "mensajes", mensajes: [...msg] };
+  const mensaje = new normalizr.schema.Entity(
+    "mensajes",
+    {},
+    { idAttribute: "email" }
+  ); //al agrgarle el idAttribute devuelve undefined por consola
+  const mySchema = { mensajes: [mensaje] };
+  const mensajesNormalized = normalize(myData, mySchema);
+
+  console.log(msg.length);
+  console.log(JSON.stringify(mensajesNormalized).length);
 });
